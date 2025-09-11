@@ -69,6 +69,7 @@ add_library(
   src/filter_base.cpp
   src/filter_utilities.cpp
   src/navsat_transform.cpp
+  src/map_origin_transform.cpp
   src/robot_localization_estimator.cpp
   src/ros_filter.cpp
   src/ros_filter_utilities.cpp
@@ -95,6 +96,11 @@ add_executable(
 add_executable(
   robot_localization_listener_node
   src/robot_localization_listener_node.cpp
+)
+
+add_executable(
+  map_origin_transform_node
+  src/map_origin_transform_node.cpp
 )
 
 target_link_libraries(
@@ -160,6 +166,16 @@ target_link_libraries(
 
 ament_target_dependencies(
   robot_localization_listener_node
+  rclcpp
+)
+
+target_link_libraries(
+  map_origin_transform_node
+  ${library_name}
+)
+
+ament_target_dependencies(
+  map_origin_transform_node
   rclcpp
 )
 
@@ -328,6 +344,7 @@ install(
   ekf_node
   ukf_node
   robot_localization_listener_node
+  map_origin_transform_node
   RUNTIME DESTINATION lib/${PROJECT_NAME}
 )
 

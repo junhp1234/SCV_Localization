@@ -1,0 +1,43 @@
+map_origin_transform_node:
+  ros__parameters:
+    # Map origin parameters for coordinate frame transformation
+    # These parameters define the origin point (reference) for the map frame
+    # in terms of GPS coordinates and UTM coordinates
+    
+    # GPS coordinates of the map origin (decimal degrees)
+    map_origin:
+      gps:
+        latitude: 37.5665  # Example latitude (Seoul, Korea)
+        longitude: 126.9780  # Example longitude (Seoul, Korea)
+        altitude: 0.0  # Altitude in meters
+      
+      # UTM coordinates of the map origin
+      utm:
+        easting: 323000.0    # UTM easting in meters
+        northing: 4157000.0  # UTM northing in meters  
+        zone: "52N"          # UTM zone
+    
+    # Transform broadcasting parameters
+    broadcast_transform: false  # Whether to broadcast the map->odom transform
+    
+    # Frame IDs
+    map_frame: "map"
+    odom_frame: "odom"
+    
+    # Update frequency for transform broadcasting (Hz)
+    frequency: 10.0
+    
+    # Static transform mode - if true, publishes static transform once
+    # if false, publishes transform at specified frequency
+    static_transform: true
+    
+    # Optional offset parameters (in meters and radians)
+    transform_offset:
+      translation:
+        x: 0.0
+        y: 0.0 
+        z: 0.0
+      rotation:
+        roll: 0.0
+        pitch: 0.0
+        yaw: 0.0
